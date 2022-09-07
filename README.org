@@ -1,0 +1,14 @@
+This repository demonstrates how to write a local override an upstream module that is included in an upstream class.
+
+I am using “theirs” and “ours” to demonstrate the concerns.  The “theirs” files
+are from an upstream dependency.  The “ours” files are things that are part of
+my application.
+
+There are four primary files:
+
+- main.rb :: The application boot logic.
+- theirs/their_module.rb :: The module that they mixin to /their/ class.
+- theirs/their_class.rb :: The class that /they/ provide.
+- ours/their_module.rb :: The changes to /their/ module that we want to apply to /their/ class (by way of /their/ module) for /our/ application.
+
+To see the output of the method changes run =$ ruby main.rb=.
