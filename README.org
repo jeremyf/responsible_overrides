@@ -1,14 +1,23 @@
-This repository demonstrates how to write a local override an upstream module that is included in an upstream class.
+This repository demonstrates how to make a local override of an upstream module that is included in one or more upstream classes.
 
-I am using “theirs” and “ours” to demonstrate the concerns.  The “theirs” files
-are from an upstream dependency.  The “ours” files are things that are part of
-my application.
+I am using /theirs/ and /ours/ to demonstrate the concerns.  The /theirs/ files are from an upstream dependency.  The /ours/ files are things that are part of my application.
 
-There are four primary files:
+The key challenge is that we need to include /our/ module logic in /their/ module *before* /their/ class incluces /their/ module.
 
-- main.rb :: The application boot logic.
-- theirs/their_module.rb :: The module that they mixin to /their/ class.
-- theirs/their_class.rb :: The class that /they/ provide.
-- ours/their_module.rb :: The changes to /their/ module that we want to apply to /their/ class (by way of /their/ module) for /our/ application.
+In this example repository there are four primary files:
+
+- [[./main.rb][main.rb]] :: The application boot logic.
+- [[./theirs/their_module.rb][theirs/their_module.rb]] :: The module that they mixin to /their/ class.
+- [[./theirs/their_class.rb][theirs/their_class.rb]] :: The class that /they/ provide.
+- [[./ours/their_module.rb][ours/their_module.rb]] :: The changes to /their/ module that we want to apply to /their/ class (by way of /their/ module) for /our/ application.
+
+This approach avoids copying the /their/ whole module’s contents into /our/ application and instead provides a few advantages:
+
+1. We need only update the specific methods.
+2. /Our/ updated methods can call /their/ methods via =super=.
+
+The key concept is that we need to understand what is required in /their/ class and ensure that we add /our/ file so that it will match /their/ require earlier in the =$LOAD_PATH=.
 
 To see the output of the method changes run =$ ruby main.rb=.
+
+/Note:/ In [[./ours/their_module.rb][ours/their_module.rb]] I name the module =TheirModuleDecorator=.  This follows on [[https://playbook-staging.notch8.com/en/dev/ruby/decorators-and-class-eval][Overrides with Decorators and Class Eval]] and [[https://playbook-staging.notch8.com/en/dev/override-a-method-without-copying-entire-file][How To: Override a method from a dependency without copying the entire file over]].

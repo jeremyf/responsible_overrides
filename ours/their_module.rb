@@ -18,10 +18,10 @@
 # However, so as not to build a complete set of gems and engines, I'm doing approximations.  The
 # main goal is to be more explicit about the required file's location.
 require File.expand_path("../theirs/their_module", __dir__)
-module OurTheirModuleDecorator
+module TheirModuleDecorator
   def function_to_modify
-    ["OurTheirModuleDecorator#function_to_modify", super].inspect
+    ["TheirModuleDecorator#function_to_modify", super].inspect
   end
 end
 
-TheirModule.prepend(OurTheirModuleDecorator)
+TheirModule.prepend(TheirModuleDecorator)
