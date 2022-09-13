@@ -1,0 +1,42 @@
+* TheirEngine
+
+This is a bare-bones implementation of a [[https://guides.rubyonrails.org/engines.html][Rails Engine]].  The intention is to provide a simple Engine that can be used in an upstream application.
+
+Below is a `tree` manifest of the files of this engine.  I have removed all extraneous files (e.g. Rakefile and bin files).
+
+#+begin_example
+.
+├── Gemfile
+├── README.md
+├── app
+│   └── models
+│       └── their_engine
+│           └── model.rb
+├── lib
+│   ├── their_engine
+│   │   ├── engine.rb
+│   │   ├── model_behavior.rb
+│   │   └── version.rb
+│   └── their_engine.rb
+├── spec
+│   ├── models
+│   │   └── their_engine
+│   │       └── model_spec.rb
+│   └── spec_helper.rb
+└── their_engine.gemspec
+
+8 directories, 10 files
+#+end_example
+
+There are two files for upstream consideration:
+
+- =app/models/their_engine/model.rb= :: the “model” that the upstream application wants
+- =lib/their_engine/model_behavior.rb= :: the “behavior” that we mixin to the engine’s “model”
+
+For completeness, I include the =spec/models/their_engine/model_spec.rb= to demonstrate local behavior.
+
+** Discussion
+
+For those in Blacklight and Samvera, you might recognize the “Behavior” model as an idiom of that ecosystem.  I’m including it as a touchstone in communicating the concept.
+
+To the best of my ability, I have attempted to follow the my understanding of [[https://guides.rubyonrails.org/autoloading_and_reloading_constants.html][Rails auto-loading and eager-loading]]; part of why I wrote this is to help me solidify my understanding of these concepts.
