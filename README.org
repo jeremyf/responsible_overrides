@@ -1,5 +1,12 @@
 This repository demonstrates how to make a local override of an upstream module that is included in one or more upstream classes.
 
+There are two demonstrations:
+
+- Plain Ruby
+- Rails
+
+** Plain Ruby
+
 I am using /theirs/ and /ours/ to demonstrate the concerns.  The /theirs/ files are from an upstream dependency.  The /ours/ files are things that are part of my application.
 
 The key challenge is that we need to include /our/ module logic in /their/ module *before* /their/ class incluces /their/ module.
@@ -21,3 +28,12 @@ The key concept is that we need to understand what is required (or auto-loaded) 
 To see the output of the method changes run =$ ruby main.rb=.
 
 /Note:/ In [[./ours/their_module.rb][ours/their_module.rb]] I name the module =TheirModuleDecorator=.  This follows on [[https://playbook-staging.notch8.com/en/dev/ruby/decorators-and-class-eval][Overrides with Decorators and Class Eval]] and [[https://playbook-staging.notch8.com/en/dev/override-a-method-without-copying-entire-file][How To: Override a method from a dependency without copying the entire file over]].
+
+** Rails
+
+With Rails’s =autoload= there are different considerations.  There are two sub-directories:
+
+- [[./our_app/README.org][our_app]] :: the Rails application that leverages and extends logic from /their_engine/.
+- [[./their_engine/README.org][their_engine]] :: the gem that provides the behavior for /our_app/.
+
+Each of those directories have their own README to explain their setup.  In both of them, you can run =rspec=.
