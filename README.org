@@ -16,7 +16,7 @@ This approach avoids copying the /their/ whole module’s contents into /our/ ap
 1. We need only update the specific methods.
 2. /Our/ updated methods can call /their/ methods via =super=.
 
-The key concept is that we need to understand what is required in /their/ class and ensure that we add /our/ file so that it will match /their/ require earlier in the =$LOAD_PATH=.
+The key concept is that we need to understand what is required (or auto-loaded) in /their/ class and ensure that we add /our/ file so that it will match /their/ require earlier in the =$LOAD_PATH=.
 
 To see the output of the method changes run =$ ruby main.rb=.
 

@@ -1,0 +1,9 @@
+* OurApp
+
+This is a bare-bones Rails application.  It’s purpose is to demonstrate how to override methods provided by an Engine.  In particular, how to override the methods provided by an Engine’s module which is then included in an Engine’s class.
+
+The relevant files are:
+
+- =app/models/their_engine/model_decorator.rb= :: performs the override of module methods
+- =spec/models/their_engine/model_decorator_spec.rb= :: verifies that we’ve updated the underlying model
+- =our_app/config/application.rb= :: ensures that we load the =app/models/their_engine/model_decorator.rb=
