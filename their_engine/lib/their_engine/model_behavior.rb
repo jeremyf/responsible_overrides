@@ -10,6 +10,10 @@ module TheirEngine
       def engine_class_behavior_to_sustain
         :engine_class_behavior_to_sustain
       end
+
+      def engine_class_behavior_to_override_via_module
+        :engine_class_behavior_to_override_via_module
+      end
     end
 
     def engine_instance_behavior_to_override
@@ -18,6 +22,10 @@ module TheirEngine
 
     def engine_instance_behavior_to_sustain
       :engine_instance_behavior_to_sustain
+    end
+
+    def engine_instance_behavior_to_override_via_module
+      :engine_instance_behavior_to_override_via_module
     end
   end
 end
